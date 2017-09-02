@@ -1,26 +1,60 @@
 function sym(args) {
   var answer = [];
-  var a0 = sym.arguments[0];
-  var a1 = sym.arguments[1];
-  var longArray = a0.concat(a1).sort();
-  var len = longArray.length;
+  var longArray = [];
 
-  if(longArray[0] != longArray[1]){
-    answer.push(longArray[0])
-  }
-
-  for(var i = 1; i < len - 1; i++){
-    if(longArray[i-1] != longArray[i]){
-      if(longArray[i] != longArray[i+1]){
-        answer.push(longArray[i]);
-      }
+  for(var i = 0; i < arguments.length; i++){
+    if(i == 0){
+      longArray = longArray.concat(arguments[i]).sort();
     }
-  }
+    if(i == 1){
+        longArray = longArray.concat(arguments[i]).sort();
+        console.log("This is longArray: " + longArray);
+        if(longArray[0] != longArray[1]){
+            answer.push(longArray[0]);
+        }//if
+        console.log("This is Answer1: " + answer);
 
-  if(longArray[len-1] != longArray[len-2]){
-    answer.push(longArray[len-1])
-  }
-  console.log(answer);
+        for(var j = 1; j < longArray.length - 1; j++){
+
+          if( (longArray[j] != longArray[j-1]) && (longArray[j] != longArray[j+1]) ){
+
+              answer.push(longArray[j]);
+
+          }//if
+        }// for j
+        console.log("This is Answer2: "+ answer);
+
+        if(longArray[longArray.length-1] != longArray[longArray.length-2]){
+          answer.push(longArray[longArray.length-1]);
+        }
+        console.log("This is Answer3: "+ answer);
+    }//if
+    if(i > 1){
+        longArray = answer.concat(arguments[i]).sort();
+
+        if(longArray[0] != longArray[1]){
+            answer.push(longArray[0]);
+        }//if
+        console.log("This is Answer1: " + answer);
+
+        for(var j = 1; j < len - 1; j++){
+
+          if(longArray[j] != longArray[j-1]){
+            if(longArray[j] != longArray[j+1]){
+              answer.push(longArray[j]);
+            }
+          }
+        }// for j
+        console.log("This is Answer2: "+ answer);
+
+        if(longArray[len-1] != longArray[len-2]){
+          answer.push(longArray[len-1]);
+        }
+        console.log("This is Answer3: "+ answer);
+    }//if
+
+  }//for i
+  console.log("adsfasdf"+arguments.length);
   return answer;
 }
 
