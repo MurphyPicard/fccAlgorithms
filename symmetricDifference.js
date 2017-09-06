@@ -44,6 +44,7 @@ function sym(args) {
         }
     }//if > 1
   }//main for loop i
+  console.log(answer);
   return answer;
 }
 
